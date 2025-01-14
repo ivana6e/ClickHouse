@@ -24,12 +24,10 @@ public interface MessageJpaRepository extends JpaRepository<MessageEntity, Long>
 
     @Query(value = """
     DELETE FROM message
-    WHERE user_id = :userId AND user_service = :userService
-    AND (item_id, item_service, message_id) NOT IN (
-        SELECT item_id, item_service, max(message_id) AS message_id
+    WHERE (item_id, item_service, message_id) NOT IN (
+        SELECT item_id, item_service, max(message_id)
         FROM message
-        WHERE user_id = :userId AND user_service = :userService
         GROUP BY item_id, item_service
     )""", nativeQuery = true)
-    void deleteByUserIdAndUserService(@Param("userId") String userId, @Param("userService") String userService);
+    void delete();
 }

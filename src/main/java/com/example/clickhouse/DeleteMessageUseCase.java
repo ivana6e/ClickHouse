@@ -9,7 +9,7 @@ public class DeleteMessageUseCase {
 
     private final MessageJpaRepository messageJpaRepository;
 
-    public void deleteByUserIdAndUserService(String userId, UserService userService) {
-        messageJpaRepository.deleteByUserIdAndUserService(userId, userService.name());
+    public void delete() {
+        messageJpaRepository.delete();
     }
 }

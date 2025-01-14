@@ -29,9 +29,9 @@ public class MessageController {
         return readMessageUseCase.readByUserIdAndUserService(userId, userService);
     }
 
-    @DeleteMapping("/delete/{userId}/{userService}")
-    public void deleteOneMessage(@PathVariable String userId, @PathVariable UserService userService) {
-        deleteMessageUseCase.deleteByUserIdAndUserService(userId, userService);
+    @DeleteMapping("/delete")
+    public void deleteMessage() {
+        deleteMessageUseCase.delete();
     }
 
 }
